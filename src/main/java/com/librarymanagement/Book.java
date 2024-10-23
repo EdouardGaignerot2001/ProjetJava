@@ -1,5 +1,7 @@
 package com.librarymanagement;
 
+import java.util.UUID;
+
 public class Book {
     private String guidIsbn;
     private String title;
@@ -7,8 +9,8 @@ public class Book {
     private String author;
     private double price;
 
-    public Book(String guidIsbn, String title, String description, String author, double price) {
-        this.guidIsbn = guidIsbn;
+    public Book(String title, String description, String author, double price) {
+        this.guidIsbn = UUID.randomUUID().toString();
         this.title = title;
         this.description = description;
         this.author = author;
