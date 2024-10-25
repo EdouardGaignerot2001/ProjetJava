@@ -4,48 +4,43 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 public class UserManager {
-    private Set<String> userIds;
-    private final String userFileName = "user_ids.json"; // Nom du fichier pour stocker les identifiants d'utilisateur
+    private Map<String, User> users = new HashMap<>();
 
     public UserManager() {
-        userIds = new HashSet<>();
-        loadUserIds();
+        loadUsersFromJson("users.json"); // Nom du fichier contenant les utilisateurs
     }
 
-    private void loadUserIds() {
-        try (FileReader reader = new FileReader(userFileName)) {
-            Type userIdsType = new TypeToken<List<String>>() {}.getType();
-            List<String> loadedUserIds = new Gson().fromJson(reader, userIdsType);
-            if (loadedUserIds != null) {
-                userIds.addAll(loadedUserIds);
+    // Charge les utilisateurs depuis le fichier JSON
+    private void loadUsersFromJson(String fileName) {
+        Gson gson = new Gson();
+        try (FileReader reader = new FileReader(fileName)) {
+            Type userMapType = new TypeToken<Map<String, String>>() {}.getType();
+            Map<String, String> userData = gson.fromJson(reader, userMapType);
+            for (Map.Entry<String, String> entry : userData.entrySet()) {
+                String id = entry.getKey();
+                String name = entry.getValue();
+                users.put(id, new User(id, name));
             }
         } catch (IOException e) {
-            System.err.println("Could not load user IDs: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
-    public boolean isUserExists(String userId) {
-        return userIds.contains(userId);
+    public User getUserById(String id) {
+        return users.get(id);
     }
 
-    public void addUser(String userId) {
-        userIds.add(userId);
-        saveUserIds();
+    public boolean isUserExists(String id) {
+        return users.containsKey(id);
     }
 
-    private void saveUserIds() {
-        try (FileWriter writer = new FileWriter(userFileName)) {
-            new Gson().toJson(userIds, writer);
-        } catch (IOException e) {
-            System.err.println("Could not save user IDs: " + e.getMessage());
-        }
+    public void addUser(String id, String name) {
+        users.put(id, new User(id, name));
     }
 }

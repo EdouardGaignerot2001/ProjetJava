@@ -7,17 +7,24 @@ public class RentalService {
         this.library = library;
     }
 
-    public void rentBook(User user, Book book) {
-        if (user.hasReachedMaxBooks()) {
-            System.out.println("l'utilisateur " + user.getName() + ", ne peut plus louer de livres");
-            return;
+    public boolean rentBook(User user, Book book) {
+        if (!library.getBooks().contains(book)) {
+            System.out.println("Le livre " + book.getTitle() + " n'est pas disponible dans la bibliothèque.");
+            return false;
         }
+
+        if (user.hasReachedMaxBooks()) {
+            System.out.println("L'utilisateur " + user.getName() + " ne peut plus louer de livres.");
+            return false;
+        }
+
         if (user.alreadyRentedBook(book)) {
-            System.out.println("\"l'utilisateur " + user.getName() + ", ce livre est deja louer " + book.getTitle());
-            return;
+            System.out.println("L'utilisateur " + user.getName() + " a déjà loué le livre " + book.getTitle() + ".");
+            return false;
         }
 
         user.rentBook(book);
-        System.out.println("l'utilisateur  " + user.getName() +  ", a louer ce livre " + book.getTitle());
+        System.out.println("L'utilisateur " + user.getName() + " a loué le livre " + book.getTitle() + ".");
+        return true;
     }
 }

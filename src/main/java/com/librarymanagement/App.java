@@ -8,7 +8,7 @@ public class App {
         UserManager userManager = new UserManager();
         Library library = new Library(); // Créer l'instance de la bibliothèque
         Scanner scanner = new Scanner(System.in);
-        String userId;
+        User currentUser;
 
         // Charger les livres depuis le fichier JSON
         JsonBookLoader bookLoader = new JsonBookLoader();
@@ -28,24 +28,29 @@ public class App {
 
         while (true) {
             System.out.println("Entrez votre identifiant utilisateur (ou tapez 'exit' pour quitter) : ");
-            userId = scanner.nextLine();
+            String userIdInput = scanner.nextLine();
 
-            if (userId.equals("exit")) {
+            if (userIdInput.equals("exit")) {
                 System.out.println("Merci et à bientôt !");
                 break;
             }
 
-            if (userManager.isUserExists(userId)) {
-                System.out.println("Connexion réussie. Bienvenue, " + userId + " !");
-                showMenu(scanner, userId, library);
+            currentUser = userManager.getUserById(userIdInput);
+
+            if (currentUser != null) {
+                System.out.println("Connexion réussie. Bienvenue, " + currentUser.getName() + " !");
+                showMenu(scanner, currentUser, library);
                 break;
             } else {
                 System.out.println("Identifiant non trouvé. Voulez-vous créer un nouvel identifiant ? (oui/non)");
                 String response = scanner.nextLine();
                 if (response.equalsIgnoreCase("oui")) {
-                    userManager.addUser(userId);
-                    System.out.println("Nouvel identifiant créé. Bienvenue, " + userId + " !");
-                    showMenu(scanner, userId, library);
+                    System.out.print("Entrez votre nom : ");
+                    String userName = scanner.nextLine();
+                    userManager.addUser(userIdInput, userName);
+                    currentUser = userManager.getUserById(userIdInput);
+                    System.out.println("Nouvel identifiant créé. Bienvenue, " + currentUser.getName() + " !");
+                    showMenu(scanner, currentUser, library);
                     break;
                 } else {
                     System.out.println("Merci et à bientôt !");
@@ -57,12 +62,14 @@ public class App {
         scanner.close();
     }
 
-    private static void showMenu(Scanner scanner, String userId, Library library) {
+    private static void showMenu(Scanner scanner, User user, Library library) {
         while (true) {
             System.out.println("Menu :");
             System.out.println("1. Louer un livre");
             System.out.println("2. Afficher les livres disponibles");
             System.out.println("3. Voir les détails d'un livre");
+            System.out.println("4. Rendre un livre");
+            System.out.println("5. Exporter le catalogue");
             System.out.println("0. Quitter");
             System.out.print("Choisissez une option : ");
 
@@ -70,7 +77,7 @@ public class App {
 
             switch (choice) {
                 case "1":
-                    System.out.println("Fonctionnalité de location de livre (à implémenter)");
+                    rentBook(scanner, user, library);
                     break;
                 case "2":
                     listAvailableBooks(library);
@@ -99,7 +106,7 @@ public class App {
         System.out.print("Entrez l'ISBN du livre : ");
         String isbn = scanner.nextLine();
         Book book = library.getBookByIsbn(isbn);
-        
+
         if (book != null) {
             System.out.println("Détails du livre :");
             System.out.println("ISBN : " + book.getGuidIsbn());
@@ -111,4 +118,27 @@ public class App {
             System.out.println("Livre non trouvé avec l'ISBN fourni.");
         }
     }
+
+    // Méthode pour louer un livre
+    private static void rentBook(Scanner scanner, User user, Library library) {
+        System.out.print("Entrez l'ISBN du livre que vous souhaitez louer : ");
+        String isbn = scanner.nextLine();
+
+        Book book = library.getBookByIsbn(isbn);
+
+        if (book != null) {
+            RentalService rentalService = new RentalService(library);
+            boolean success = rentalService.rentBook(user, book);
+
+            if (success) {
+                System.out.println("Vous avez loué le livre avec succès : " + book.getTitle());
+            } else {
+                System.out.println(
+                        "Échec : Vous ne pouvez pas louer plus de 3 livres ou un exemplaire multiple de ce livre.");
+            }
+        } else {
+            System.out.println("Livre non trouvé avec l'ISBN fourni.");
+        }
+    }
+
 }
