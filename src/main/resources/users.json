@@ -1,7 +1,24 @@
-[
-    "user123",
-    "john_doe",
-    "alice_smith",
-    "bob_johnson",
-    "test"
-]
+{
+    "users": [
+        {
+            "GUID": "b45f7c42-813b-4f9a-9ef8-652d1a0e5e2f",
+            "name": "John Doe",
+            "rentedBooks": []
+        },
+        {
+            "GUID": "a7f16cb1-4d3d-45b6-a5e5-9d10cfa24b35",
+            "name": "Alice Smith",
+            "rentedBooks": []
+        },
+        {
+            "GUID": "c0d7b6a9-5b9c-47d2-8eaf-8fd122d56fb3",
+            "name": "Bob Johnson",
+            "rentedBooks": []
+        },
+        {
+            "GUID": "c0d7b6a9-5b9c-47d2-8eaf-8fd122d56tb3",
+            "name": "test",
+            "rentedBooks": []
+        }
+    ]
+}

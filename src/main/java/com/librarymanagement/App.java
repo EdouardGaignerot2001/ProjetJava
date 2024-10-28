@@ -12,6 +12,7 @@ public class App {
 
         MenuService menuService = new MenuService(userManager, libraryService);
         menuService.loadBooksFromJson("book_catalog.json");
+        menuService.loadUsersFromJson("users.json");
 
         User currentUser = menuService.authenticateUser(scanner);
 

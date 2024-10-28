@@ -1,21 +1,25 @@
 package com.librarymanagement;
 
+import java.util.UUID;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private String id;
+    private String GUID;
     private String name;
     private List<Book> rentedBooks;
+    private List<User> users;
+
 
     public User(String id, String name) {
-        this.id = id;
+        this.GUID =  UUID.randomUUID().toString();
         this.name = name;
-        this.rentedBooks = new ArrayList<>();
+        this.rentedBooks = new ArrayList<>(); // Initialise rentedBooks
     }
-
+   
     public String getId() {
-        return id;
+        return GUID;
     }
 
     public String getName() {
@@ -23,18 +27,21 @@ public class User {
     }
 
     public List<Book> getRentedBooks() {
+        if (rentedBooks == null) { // Vérification de nullité au cas où
+            rentedBooks = new ArrayList<>();
+        }
         return rentedBooks;
     }
 
     public void rentBook(Book book) {
-        rentedBooks.add(book);
+        getRentedBooks().add(book); // Assure rentedBooks non null avant l'ajout
     }
 
     public boolean hasReachedMaxBooks() {
-        return rentedBooks.size() >= 3;
+        return getRentedBooks().size() >= 3; // Utilise getRentedBooks() pour éviter NullPointer
     }
 
     public boolean alreadyRentedBook(Book book) {
-        return rentedBooks.contains(book);
+        return getRentedBooks().contains(book); // Utilise getRentedBooks() pour éviter NullPointer
     }
 }

@@ -14,29 +14,32 @@ public class MenuService {
     public void loadBooksFromJson(String jsonFileName) {
         libraryService.loadBooksFromJson(jsonFileName);
     }
+    public void loadUsersFromJson(String jsonFileName) {
+        userManager.loadUsersFromJson(jsonFileName);
+    }
 
     public User authenticateUser(Scanner scanner) {
         while (true) {
-            System.out.print("Entrez votre identifiant utilisateur (ou tapez 'exit' pour quitter) : ");
-            String userIdInput = scanner.nextLine();
-            
-            if ("exit".equalsIgnoreCase(userIdInput)) {
+            System.out.print("Entrez votre nom d'utilisateur (ou tapez 'exit' pour quitter) : ");
+            String userNameInput = scanner.nextLine();
+    
+            if ("exit".equalsIgnoreCase(userNameInput)) {
                 System.out.println("Merci et à bientôt !");
                 return null;
             }
-
-            User user = userManager.getUserById(userIdInput);
+    
+            // Chercher l'utilisateur par nom
+            User user = userManager.getUserByName(userNameInput).orElse(null);
             if (user != null) {
                 System.out.println("Connexion réussie. Bienvenue, " + user.getName() + " !");
                 return user;
             } else {
-                System.out.print("Identifiant non trouvé. Voulez-vous créer un nouvel identifiant ? (oui/non): ");
+                System.out.print("Nom d'utilisateur non trouvé. Voulez-vous créer un nouvel utilisateur ? (oui/non): ");
                 if ("oui".equalsIgnoreCase(scanner.nextLine())) {
-                    System.out.print("Entrez votre nom : ");
-                    String userName = scanner.nextLine();
-                    userManager.addUser(userIdInput, userName);
-                    System.out.println("Nouvel identifiant créé. Bienvenue, " + userName + " !");
-                    return userManager.getUserById(userIdInput);
+                    userManager.addUserJson(userNameInput); // Crée et enregistre un nouvel utilisateur
+                    System.out.println("Nouvel utilisateur créé. Bienvenue, " + userNameInput + " !");
+                    // Récupère l'utilisateur nouvellement ajouté pour le retourner
+                    return userManager.getUserByName(userNameInput).orElse(null);
                 } else {
                     System.out.println("Merci et à bientôt !");
                     return null;
@@ -44,6 +47,7 @@ public class MenuService {
             }
         }
     }
+    
 
     public void showMenu(Scanner scanner, User user) {
         while (true) {

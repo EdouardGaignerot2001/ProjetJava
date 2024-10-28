@@ -28,7 +28,7 @@ public class LibraryService {
     public void listAvailableBooks() {
         System.out.println("Liste des livres disponibles :");
         for (Book book : library.getBooks()) {
-            System.out.println("Titre : " + book.getTitle() + ", ISBN : " + book.getGuidIsbn());
+            System.out.println("Titre : " + book.getTitle() + ", ISBN : " + book.getGUID());
         }
     }
 
@@ -39,7 +39,7 @@ public class LibraryService {
 
         if (book != null) {
             System.out.println("Détails du livre :");
-            System.out.println("ISBN : " + book.getGuidIsbn());
+            System.out.println("ISBN : " + book.getGUID());
             System.out.println("Titre : " + book.getTitle());
             System.out.println("Auteur : " + book.getAuthor());
             System.out.println("Description : " + book.getDescription());
@@ -61,4 +61,5 @@ public class LibraryService {
             System.out.println("Livre non trouvé avec l'ISBN fourni.");
         }
     }
+    
 }

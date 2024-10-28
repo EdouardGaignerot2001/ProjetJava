@@ -21,7 +21,7 @@ public class Library {
     // Méthode pour obtenir un livre par son ISBN
     public Book getBookByIsbn(String isbn) {
         for (Book book : books) {
-            if (book.getGuidIsbn().equals(isbn)) {
+            if (book.getGUID().equals(isbn)) {
                 return book;
             }
         }
