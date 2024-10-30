@@ -142,14 +142,5 @@
     "author": "Elliotte Rusty Harold",
     "price": 54.99,
     "isRented": false
-  },
-  {
-    "GUID": "e5a9c4bc-7a47-4d3b-95c2-2c8a9a7eae84",
-    "title": "Pro JavaFX Platform",
-    "description": "Building rich internet applications with JavaFX.",
-    "author": "James Weaver, Weiqi Gao, Stephen Chin",
-    "price": 49.99,
-    "isRented": true,
-    "rentedBy": "0f5cb13b-3773-4869-b496-bfe6d5550060"
   }
 ]

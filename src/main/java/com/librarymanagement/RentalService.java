@@ -42,7 +42,7 @@ public class RentalService {
         book.rent(user.getGUID()); // Marque le livre comme loué et enregistre l'utilisateur
     
         // Retirez le livre de la bibliothèque
-        library.getBooks().remove(book); // Supprime le livre des livres disponibles
+        //library.getBooks().remove(book); // Supprime le livre des livres disponibles
     
         System.out.println("L'utilisateur " + user.getName() + " a loué le livre " + book.getTitle() + ".");
     

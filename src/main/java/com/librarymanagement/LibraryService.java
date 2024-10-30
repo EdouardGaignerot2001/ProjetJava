@@ -4,6 +4,11 @@ import java.util.List;
 import java.util.Scanner;
 import java.io.IOException;
 import java.util.UUID;
+import java.io.FileWriter;
+import java.util.stream.Collectors;
+import com.google.gson.Gson;
+import java.io.File;
+import com.google.gson.GsonBuilder;
 
 public class LibraryService {
     private Library library;
@@ -115,6 +120,38 @@ public class LibraryService {
             System.out.println("Le livre a été créé et sauvegardé avec succès !");
         } catch (IOException e) {
             System.err.println("Erreur lors de la sauvegarde des livres : " + e.getMessage());
+        }
+    }
+    public void exportBooks() {
+        // Définir le chemin prédéfini pour l'exportation
+        String filePath = "/Users/edouardgaignerot/Desktop/Ecole/JUNIA/AP4/JAVA/TPNOTE/Library/src/main/resources/available_books.json";
+
+        // Filtrer les livres qui ne sont pas loués
+        List<Book> availableBooks = library.getBooks().stream()
+                .filter(book -> !book.isRented())
+                .collect(Collectors.toList()); // Crée une nouvelle liste avec les livres non loués
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create(); // Créez un Gson avec un formatage lisible
+
+        // Crée le fichier s'il n'existe pas
+        File file = new File(filePath);
+        try {
+            if (!file.exists()) {
+                file.createNewFile(); // Crée le fichier si il n'existe pas
+                System.out.println("Fichier créé : " + filePath);
+            }
+        } catch (IOException e) {
+            System.err.println("Erreur lors de la création du fichier : " + e.getMessage());
+            return; // Sort de la méthode si le fichier ne peut pas être créé
+        }
+
+        // Écrire dans le fichier
+        try (FileWriter writer = new FileWriter(file)) { // Utilisez le chemin prédéfini
+            String json = gson.toJson(availableBooks); // Convertissez la liste filtrée en JSON
+            writer.write(json); // Écrivez le JSON dans le fichier
+            System.out.println("Le catalogue des livres disponibles a été exporté avec succès vers " + filePath + " !");
+        } catch (IOException e) {
+            System.err.println("Erreur lors de l'exportation du catalogue : " + e.getMessage());
         }
     }
 }    

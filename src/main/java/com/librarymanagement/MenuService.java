@@ -76,6 +76,10 @@ public class MenuService {
                     break;
                 case "4":
                     libraryService.returnBook(scanner, user);
+                case "5":
+                    libraryService.exportBooks(); // Appeler la méthode d'exportation
+                    break;
+
                 case "6":
                     libraryService.createBook(scanner);
                     break;

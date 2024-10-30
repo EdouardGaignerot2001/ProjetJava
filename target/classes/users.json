@@ -23,5 +23,12 @@
     "GUID": "c0d7b6a9-5b9c-47d2-8eaf-8fd122d56fb3",
     "name": "Bob Johnson",
     "rentedBooks": []
+  },
+  {
+    "GUID": "0f5cb13b-3773-4869-b496-bfe6d5550060",
+    "name": "$",
+    "rentedBooks": [
+      "e5a9c4bc-7a47-4d3b-95c2-2c8a9a7eae84"
+    ]
   }
 ]
