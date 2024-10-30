@@ -6,8 +6,6 @@
 3. [Architecture](#architecture)
 5. [Utilisation](#utilisation)
 6. [Détails Techniques](#détails-techniques)
-7. [Contributions](#contributions)
-8. [License](#license)
 
 ## Introduction
 Le système de gestion de bibliothèque est une application Java conçue pour faciliter la gestion des utilisateurs et des livres dans une bibliothèque. Il permet aux utilisateurs de louer, retourner et afficher des livres tout en gérant les informations des utilisateurs dans un format JSON.
