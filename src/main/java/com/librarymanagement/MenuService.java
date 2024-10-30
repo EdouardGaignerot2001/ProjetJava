@@ -58,6 +58,7 @@ public class MenuService {
             System.out.println("3. Voir les détails d'un livre");
             System.out.println("4. Rendre un livre");
             System.out.println("5. Exporter le catalogue");
+            System.out.println("5. crer un livre");
             System.out.println("0. Quitter");
             System.out.print("Choisissez une option : ");
 

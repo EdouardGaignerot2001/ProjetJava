@@ -1,24 +1,27 @@
-{
-    "users": [
-        {
-            "GUID": "b45f7c42-813b-4f9a-9ef8-652d1a0e5e2f",
-            "name": "John Doe",
-            "rentedBooks": []
-        },
-        {
-            "GUID": "a7f16cb1-4d3d-45b6-a5e5-9d10cfa24b35",
-            "name": "Alice Smith",
-            "rentedBooks": []
-        },
-        {
-            "GUID": "c0d7b6a9-5b9c-47d2-8eaf-8fd122d56fb3",
-            "name": "Bob Johnson",
-            "rentedBooks": []
-        },
-        {
-            "GUID": "c0d7b6a9-5b9c-47d2-8eaf-8fd122d56tb3",
-            "name": "test",
-            "rentedBooks": []
-        }
-    ]
-}
+[
+  {
+    "GUID": "e52cb045-69cd-4420-9b1a-61c9ced31e38",
+    "name": "yy",
+    "rentedBooks": []
+  },
+  {
+    "GUID": "705fb616-2329-4d30-a6bf-55fab5e2bad8",
+    "name": "teste",
+    "rentedBooks": []
+  },
+  {
+    "GUID": "a7f16cb1-4d3d-45b6-a5e5-9d10cfa24b35",
+    "name": "Alice Smith",
+    "rentedBooks": []
+  },
+  {
+    "GUID": "b45f7c42-813b-4f9a-9ef8-652d1a0e5e2f",
+    "name": "John Doe",
+    "rentedBooks": []
+  },
+  {
+    "GUID": "c0d7b6a9-5b9c-47d2-8eaf-8fd122d56fb3",
+    "name": "Bob Johnson",
+    "rentedBooks": []
+  }
+]

@@ -1,5 +1,4 @@
-{
-    "books": [
+[
       {
         "GUID": "d2f98a1b-9d3f-4fd3-bb83-6c2a44b5ec23",
         "title": "Effective Java",
@@ -140,6 +139,6 @@
         "author": "Kishori Sharan",
         "price": 39.99
       }
-    ]
-  }
+]
+
   
