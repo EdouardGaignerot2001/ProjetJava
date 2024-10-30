@@ -2,10 +2,7 @@
   {
     "GUID": "e52cb045-69cd-4420-9b1a-61c9ced31e38",
     "name": "yy",
-    "rentedBooks": [
-      "e5a9c4bc-7a47-4d3b-95c2-2c8a9a7eae84",
-      "e9b5e6e6-d888-4f0a-9a0c-4f276e725c7e"
-    ]
+    "rentedBooks": []
   },
   {
     "GUID": "705fb616-2329-4d30-a6bf-55fab5e2bad8",

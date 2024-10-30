@@ -1,144 +1,170 @@
 [
-      {
-        "GUID": "d2f98a1b-9d3f-4fd3-bb83-6c2a44b5ec23",
-        "title": "Effective Java",
-        "description": "A comprehensive guide to best practices in Java programming.",
-        "author": "Joshua Bloch",
-        "price": 45.99
-      },
-      {
-        "GUID": "f3c6785d-5f0b-4853-9f23-61c21e8bb30b",
-        "title": "Clean Code",
-        "description": "A Handbook of Agile Software Craftsmanship.",
-        "author": "Robert C. Martin",
-        "price": 39.99
-      },
-      {
-        "GUID": "5cbd09f8-abc1-4c75-89e3-9472cbf9d9c1",
-        "title": "Java Concurrency in Practice",
-        "description": "Learn how to write efficient multithreaded Java code.",
-        "author": "Brian Goetz",
-        "price": 59.99
-      },
-      {
-        "GUID": "d1739f6a-b1b5-4b45-a567-62a6b446b39c",
-        "title": "Head First Java",
-        "description": "A brain-friendly guide to learning Java.",
-        "author": "Kathy Sierra, Bert Bates",
-        "price": 35.99
-      },
-      {
-        "GUID": "a421f573-e6de-4766-ae3a-dfa2c301e96d",
-        "title": "Design Patterns: Elements of Reusable Object-Oriented Software",
-        "description": "A classic book on design patterns in software engineering.",
-        "author": "Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides",
-        "price": 49.99
-      },
-      {
-        "GUID": "89f6b751-6d3d-4964-93b2-cd3c624f83e7",
-        "title": "Refactoring: Improving the Design of Existing Code",
-        "description": "Techniques for refactoring code to improve its structure and maintainability.",
-        "author": "Martin Fowler",
-        "price": 42.50
-      },
-      {
-        "GUID": "c4560c72-4c69-4a5d-8494-7656b092156e",
-        "title": "Test Driven Development: By Example",
-        "description": "An introduction to test-driven development and unit testing.",
-        "author": "Kent Beck",
-        "price": 29.99
-      },
-      {
-        "GUID": "d367a765-5566-4a5f-aeb4-5613b6c6d64a",
-        "title": "Spring in Action",
-        "description": "A comprehensive guide to developing applications with Spring Framework.",
-        "author": "Craig Walls",
-        "price": 44.95
-      },
-      {
-        "GUID": "e230f9dc-ff8c-48d5-9aa9-38f66f732ff3",
-        "title": "Java Performance: The Definitive Guide",
-        "description": "Techniques for optimizing Java applications.",
-        "author": "Scott Oaks",
-        "price": 49.99
-      },
-      {
-        "GUID": "a9b4cde3-1e25-473b-9e8d-1ff85c8cfc1f",
-        "title": "Java: The Complete Reference",
-        "description": "A comprehensive reference for Java programming.",
-        "author": "Herbert Schildt",
-        "price": 60.00
-      },
-      {
-        "GUID": "fa93b209-1b76-46b4-a9f5-cad6b5aeef4c",
-        "title": "The Pragmatic Programmer",
-        "description": "Best practices and tips for becoming a more effective programmer.",
-        "author": "Andrew Hunt, David Thomas",
-        "price": 39.99
-      },
-      {
-        "GUID": "13bf707f-d490-4b10-b6e2-7fc38d704af0",
-        "title": "Clean Architecture: A Craftsman's Guide to Software Structure",
-        "description": "Guide to creating maintainable and flexible software architectures.",
-        "author": "Robert C. Martin",
-        "price": 49.99
-      },
-      {
-        "GUID": "b78f88a1-4654-4c84-bcf7-1a95c27e89f3",
-        "title": "Core Java Volume I—Fundamentals",
-        "description": "An in-depth guide to the core features of the Java language.",
-        "author": "Cay S. Horstmann",
-        "price": 65.99
-      },
-      {
-        "GUID": "c98f91a3-d123-42f6-a8e6-6b3c568b531a",
-        "title": "Java SE 8 for the Really Impatient",
-        "description": "A short, concise introduction to new features in Java SE 8.",
-        "author": "Cay S. Horstmann",
-        "price": 29.99
-      },
-      {
-        "GUID": "d23576e1-bf60-497b-97de-bccf91e94a9d",
-        "title": "Head First Design Patterns",
-        "description": "A brain-friendly guide to design patterns.",
-        "author": "Eric Freeman, Elisabeth Robson",
-        "price": 40.00
-      },
-      {
-        "GUID": "fb7a94b2-79d8-4c08-9c7b-42d2b14d8f5c",
-        "title": "The Art of Computer Programming",
-        "description": "A comprehensive book on algorithms and programming techniques.",
-        "author": "Donald E. Knuth",
-        "price": 89.99
-      },
-      {
-        "GUID": "a23d5d78-93c5-4740-a248-2fa5370c63a7",
-        "title": "Introduction to Algorithms",
-        "description": "A widely used textbook on algorithms.",
-        "author": "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein",
-        "price": 99.95
-      },
-      {
-        "GUID": "e9b5e6e6-d888-4f0a-9a0c-4f276e725c7e",
-        "title": "Java Network Programming",
-        "description": "A guide to network programming in Java.",
-        "author": "Elliotte Rusty Harold",
-        "price": 54.99
-      },
-      {
-        "GUID": "e5a9c4bc-7a47-4d3b-95c2-2c8a9a7eae84",
-        "title": "Pro JavaFX Platform",
-        "description": "Building rich internet applications with JavaFX.",
-        "author": "James Weaver, Weiqi Gao, Stephen Chin",
-        "price": 49.99
-      },
-      {
-        "GUID": "b96c3d13-6769-4de4-9f3f-e4bb15f239e9",
-        "title": "Beginning Java 8 Fundamentals",
-        "description": "A beginner's guide to Java 8 features and syntax.",
-        "author": "Kishori Sharan",
-        "price": 39.99
-      }
+  {
+    "GUID": "d2f98a1b-9d3f-4fd3-bb83-6c2a44b5ec23",
+    "title": "Effective Java",
+    "description": "A comprehensive guide to best practices in Java programming.",
+    "author": "Joshua Bloch",
+    "price": 45.99,
+    "isRented": false
+  },
+  {
+    "GUID": "f3c6785d-5f0b-4853-9f23-61c21e8bb30b",
+    "title": "Clean Code",
+    "description": "A Handbook of Agile Software Craftsmanship.",
+    "author": "Robert C. Martin",
+    "price": 39.99,
+    "isRented": false
+  },
+  {
+    "GUID": "5cbd09f8-abc1-4c75-89e3-9472cbf9d9c1",
+    "title": "Java Concurrency in Practice",
+    "description": "Learn how to write efficient multithreaded Java code.",
+    "author": "Brian Goetz",
+    "price": 59.99,
+    "isRented": false
+  },
+  {
+    "GUID": "d1739f6a-b1b5-4b45-a567-62a6b446b39c",
+    "title": "Head First Java",
+    "description": "A brain-friendly guide to learning Java.",
+    "author": "Kathy Sierra, Bert Bates",
+    "price": 35.99,
+    "isRented": false
+  },
+  {
+    "GUID": "a421f573-e6de-4766-ae3a-dfa2c301e96d",
+    "title": "Design Patterns: Elements of Reusable Object-Oriented Software",
+    "description": "A classic book on design patterns in software engineering.",
+    "author": "Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides",
+    "price": 49.99,
+    "isRented": false
+  },
+  {
+    "GUID": "89f6b751-6d3d-4964-93b2-cd3c624f83e7",
+    "title": "Refactoring: Improving the Design of Existing Code",
+    "description": "Techniques for refactoring code to improve its structure and maintainability.",
+    "author": "Martin Fowler",
+    "price": 42.5,
+    "isRented": false
+  },
+  {
+    "GUID": "c4560c72-4c69-4a5d-8494-7656b092156e",
+    "title": "Test Driven Development: By Example",
+    "description": "An introduction to test-driven development and unit testing.",
+    "author": "Kent Beck",
+    "price": 29.99,
+    "isRented": false
+  },
+  {
+    "GUID": "d367a765-5566-4a5f-aeb4-5613b6c6d64a",
+    "title": "Spring in Action",
+    "description": "A comprehensive guide to developing applications with Spring Framework.",
+    "author": "Craig Walls",
+    "price": 44.95,
+    "isRented": false
+  },
+  {
+    "GUID": "e230f9dc-ff8c-48d5-9aa9-38f66f732ff3",
+    "title": "Java Performance: The Definitive Guide",
+    "description": "Techniques for optimizing Java applications.",
+    "author": "Scott Oaks",
+    "price": 49.99,
+    "isRented": false
+  },
+  {
+    "GUID": "a9b4cde3-1e25-473b-9e8d-1ff85c8cfc1f",
+    "title": "Java: The Complete Reference",
+    "description": "A comprehensive reference for Java programming.",
+    "author": "Herbert Schildt",
+    "price": 60.0,
+    "isRented": false
+  },
+  {
+    "GUID": "fa93b209-1b76-46b4-a9f5-cad6b5aeef4c",
+    "title": "The Pragmatic Programmer",
+    "description": "Best practices and tips for becoming a more effective programmer.",
+    "author": "Andrew Hunt, David Thomas",
+    "price": 39.99,
+    "isRented": false
+  },
+  {
+    "GUID": "13bf707f-d490-4b10-b6e2-7fc38d704af0",
+    "title": "Clean Architecture: A Craftsman\u0027s Guide to Software Structure",
+    "description": "Guide to creating maintainable and flexible software architectures.",
+    "author": "Robert C. Martin",
+    "price": 49.99,
+    "isRented": false
+  },
+  {
+    "GUID": "b78f88a1-4654-4c84-bcf7-1a95c27e89f3",
+    "title": "Core Java Volume I—Fundamentals",
+    "description": "An in-depth guide to the core features of the Java language.",
+    "author": "Cay S. Horstmann",
+    "price": 65.99,
+    "isRented": false
+  },
+  {
+    "GUID": "c98f91a3-d123-42f6-a8e6-6b3c568b531a",
+    "title": "Java SE 8 for the Really Impatient",
+    "description": "A short, concise introduction to new features in Java SE 8.",
+    "author": "Cay S. Horstmann",
+    "price": 29.99,
+    "isRented": false
+  },
+  {
+    "GUID": "d23576e1-bf60-497b-97de-bccf91e94a9d",
+    "title": "Head First Design Patterns",
+    "description": "A brain-friendly guide to design patterns.",
+    "author": "Eric Freeman, Elisabeth Robson",
+    "price": 40.0,
+    "isRented": false
+  },
+  {
+    "GUID": "fb7a94b2-79d8-4c08-9c7b-42d2b14d8f5c",
+    "title": "The Art of Computer Programming",
+    "description": "A comprehensive book on algorithms and programming techniques.",
+    "author": "Donald E. Knuth",
+    "price": 89.99,
+    "isRented": false
+  },
+  {
+    "GUID": "a23d5d78-93c5-4740-a248-2fa5370c63a7",
+    "title": "Introduction to Algorithms",
+    "description": "A widely used textbook on algorithms.",
+    "author": "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein",
+    "price": 99.95,
+    "isRented": false
+  },
+  {
+    "GUID": "e9b5e6e6-d888-4f0a-9a0c-4f276e725c7e",
+    "title": "Java Network Programming",
+    "description": "A guide to network programming in Java.",
+    "author": "Elliotte Rusty Harold",
+    "price": 54.99,
+    "isRented": false
+  },
+  {
+    "GUID": "e5a9c4bc-7a47-4d3b-95c2-2c8a9a7eae84",
+    "title": "Pro JavaFX Platform",
+    "description": "Building rich internet applications with JavaFX.",
+    "author": "James Weaver, Weiqi Gao, Stephen Chin",
+    "price": 49.99,
+    "isRented": false
+  },
+  {
+    "GUID": "b96c3d13-6769-4de4-9f3f-e4bb15f239e9",
+    "title": "Beginning Java 8 Fundamentals",
+    "description": "A beginner\u0027s guide to Java 8 features and syntax.",
+    "author": "Kishori Sharan",
+    "price": 39.99,
+    "isRented": false
+  },
+  {
+    "GUID": "b96c3d13-6769-4de4-9f3f-e4bb15f239e9",
+    "title": "Beginning Java 8 Fundamentals",
+    "description": "A beginner\u0027s guide to Java 8 features and syntax.",
+    "author": "Kishori Sharan",
+    "price": 39.99,
+    "isRented": false
+  }
 ]
-
-  

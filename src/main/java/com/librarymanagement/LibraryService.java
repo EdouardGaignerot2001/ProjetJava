@@ -30,7 +30,8 @@ public class LibraryService {
     public void listAvailableBooks() {
         System.out.println("Liste des livres disponibles :");
         for (Book book : library.getBooks()) {
-            System.out.println("Titre : " + book.getTitle() + ", ISBN : " + book.getGUID());
+            System.out.println("Titre : " + book.getTitle() + ", ISBN : " + book.getGUID() + ", Price : "
+                    + book.getPrice() + ", Livre loué: " + book.isRented() + ", Personne : " + book.getRentedBy());
         }
     }
 
