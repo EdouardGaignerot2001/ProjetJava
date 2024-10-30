@@ -1,9 +1,7 @@
 package com.librarymanagement;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -13,7 +11,6 @@ import java.util.List;
 
 public class JsonUserLoader {
 
-    // Charge la liste des utilisateurs depuis le fichier JSON
     public List<User> loadUsersFromJson(String fileName) {
         Gson gson = new Gson();
         String filePath;

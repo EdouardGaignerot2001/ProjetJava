@@ -13,11 +13,9 @@ import com.google.gson.GsonBuilder;
 public class LibraryService {
     private Library library;
     private RentalService rentalService;
-    private UserManager userManager; // Add UserManager
 
     public LibraryService(Library library, UserManager userManager) {
         this.library = library;
-        this.userManager = userManager;
         this.rentalService = new RentalService(library, userManager);
     }
 
@@ -54,6 +52,8 @@ public class LibraryService {
             System.out.println("Auteur : " + book.getAuthor());
             System.out.println("Description : " + book.getDescription());
             System.out.println("Prix : " + book.getPrice());
+            System.out.println("Livre loué : " + book.isRented());
+            System.out.println("Personne : " + book.getRentedBy());
         } else {
             System.out.println("Livre non trouvé avec l'ISBN fourni.");
         }
@@ -76,45 +76,54 @@ public class LibraryService {
         System.out.print("Entrez le GUID du livre que vous souhaitez rendre : ");
         String bookGUID = scanner.nextLine();
         boolean success = rentalService.returnBook(user, bookGUID);
-        System.out.println(success ? "Livre rendu avec succès !" : "Échec du retour du livre.");
+
+        if (success) {
+
+            try {
+                library.saveBooks();
+                System.out.println("Livre rendu avec succès et catalogue sauvegardé !");
+            } catch (IOException e) {
+                System.err.println("Erreur lors de la sauvegarde des livres : " + e.getMessage());
+            }
+        } else {
+            System.out.println("Échec du retour du livre.");
+        }
     }
 
     public void createBook(Scanner scanner) {
         String guid = UUID.randomUUID().toString();
-    
+
         System.out.print("Entrez le titre du livre : ");
         String title = scanner.nextLine();
-    
+
         System.out.print("Entrez la description du livre : ");
         String description = scanner.nextLine();
-    
+
         System.out.print("Entrez l'auteur du livre : ");
         String author = scanner.nextLine();
-    
-        double price = 0.0; // Initialisation de la variable price
-        boolean validPrice = false; // Indicateur de validation
-    
-        // Validation de l'entrée pour le prix
+
+        double price = 0.0;
+        boolean validPrice = false;
+
         while (!validPrice) {
             System.out.print("Entrez le prix du livre : ");
-            String priceInput = scanner.nextLine(); // Lire l'entrée comme une chaîne
-    
+            String priceInput = scanner.nextLine();
+
             try {
-                price = Double.parseDouble(priceInput); // Convertir la chaîne en double
+                price = Double.parseDouble(priceInput);
                 if (price < 0) {
                     System.out.println("Le prix ne peut pas être négatif. Veuillez réessayer.");
                 } else {
-                    validPrice = true; // Prix valide, sortir de la boucle
+                    validPrice = true;
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Entrée invalide. Veuillez entrer un chiffre pour le prix.");
             }
         }
-    
+
         Book newBook = new Book(guid, title, description, author, price);
         library.addBook(newBook);
-    
-        // Sauvegardez les livres après avoir ajouté un nouveau livre
+
         try {
             library.saveBooks();
             System.out.println("Le livre a été créé et sauvegardé avec succès !");
@@ -122,36 +131,34 @@ public class LibraryService {
             System.err.println("Erreur lors de la sauvegarde des livres : " + e.getMessage());
         }
     }
-    public void exportBooks() {
-        // Définir le chemin prédéfini pour l'exportation
-        String filePath = "/Users/edouardgaignerot/Desktop/Ecole/JUNIA/AP4/JAVA/TPNOTE/Library/src/main/resources/available_books.json";
 
-        // Filtrer les livres qui ne sont pas loués
+    public void exportBooks() {
+
+        String filePath = "Library/src/main/resources/available_books.json";
+
         List<Book> availableBooks = library.getBooks().stream()
                 .filter(book -> !book.isRented())
-                .collect(Collectors.toList()); // Crée une nouvelle liste avec les livres non loués
+                .collect(Collectors.toList());
 
-        Gson gson = new GsonBuilder().setPrettyPrinting().create(); // Créez un Gson avec un formatage lisible
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        // Crée le fichier s'il n'existe pas
         File file = new File(filePath);
         try {
             if (!file.exists()) {
-                file.createNewFile(); // Crée le fichier si il n'existe pas
+                file.createNewFile();
                 System.out.println("Fichier créé : " + filePath);
             }
         } catch (IOException e) {
             System.err.println("Erreur lors de la création du fichier : " + e.getMessage());
-            return; // Sort de la méthode si le fichier ne peut pas être créé
+            return;
         }
 
-        // Écrire dans le fichier
-        try (FileWriter writer = new FileWriter(file)) { // Utilisez le chemin prédéfini
-            String json = gson.toJson(availableBooks); // Convertissez la liste filtrée en JSON
-            writer.write(json); // Écrivez le JSON dans le fichier
+        try (FileWriter writer = new FileWriter(file)) {
+            String json = gson.toJson(availableBooks);
+            writer.write(json);
             System.out.println("Le catalogue des livres disponibles a été exporté avec succès vers " + filePath + " !");
         } catch (IOException e) {
             System.err.println("Erreur lors de l'exportation du catalogue : " + e.getMessage());
         }
     }
-}    
+}

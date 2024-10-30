@@ -29,7 +29,6 @@ public class MenuService {
                 return null;
             }
 
-            // Chercher l'utilisateur par nom
             User user = userManager.getUserByName(userNameInput).orElse(null);
             if (user != null) {
                 System.out.println("Connexion réussie. Bienvenue, " + user.getName() + " !");
@@ -37,9 +36,9 @@ public class MenuService {
             } else {
                 System.out.print("Nom d'utilisateur non trouvé. Voulez-vous créer un nouvel utilisateur ? (oui/non): ");
                 if ("oui".equalsIgnoreCase(scanner.nextLine())) {
-                    userManager.addUserJson(userNameInput); // Crée et enregistre un nouvel utilisateur
+                    userManager.addUserJson(userNameInput);
                     System.out.println("Nouvel utilisateur créé. Bienvenue, " + userNameInput + " !");
-                    // Récupère l'utilisateur nouvellement ajouté pour le retourner
+
                     return userManager.getUserByName(userNameInput).orElse(null);
                 } else {
                     System.out.println("Merci et à bientôt !");
@@ -54,7 +53,7 @@ public class MenuService {
             System.out.println("----------------------------------------------------------------------------------");
             System.out.println("Menu :");
             System.out.println("1. Louer un livre");
-            System.out.println("2. Afficher les livres disponibles");
+            System.out.println("2. Afficher les livres");
             System.out.println("3. Voir les détails d'un livre");
             System.out.println("4. Rendre un livre");
             System.out.println("5. Exporter le catalogue");
@@ -77,7 +76,7 @@ public class MenuService {
                 case "4":
                     libraryService.returnBook(scanner, user);
                 case "5":
-                    libraryService.exportBooks(); // Appeler la méthode d'exportation
+                    libraryService.exportBooks();
                     break;
 
                 case "6":

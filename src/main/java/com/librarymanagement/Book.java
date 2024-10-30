@@ -7,7 +7,7 @@ public class Book {
     private String author;
     private double price;
     private boolean isRented;
-    private String rentedBy; 
+    private String rentedBy;
 
     public Book(String GUID, String title, String description, String author, double price) {
         this.GUID = GUID;
@@ -15,8 +15,8 @@ public class Book {
         this.description = description;
         this.author = author;
         this.price = price;
-        this.isRented = false; 
-        this.rentedBy = null;  
+        this.isRented = false;
+        this.rentedBy = null;
     }
 
     public String getGUID() {
@@ -40,27 +40,24 @@ public class Book {
     }
 
     public boolean isRented() {
-        return isRented; 
+        return isRented;
     }
 
     public String getRentedBy() {
-        return rentedBy; 
+        return rentedBy;
     }
 
     public void setRented(boolean rented) {
-        isRented = rented; 
+        isRented = rented;
     }
 
     public void rent(String userGUID) {
         this.isRented = true;
         this.rentedBy = userGUID;
-        System.out.println("Livre loué : isRented = " + isRented + ", rentedBy = " + rentedBy);
     }
-    
 
-    // Méthode pour retourner le livre
     public void returnBook() {
-        this.isRented = false; // Marque le livre comme non loué
-        this.rentedBy = null; // Réinitialise le GUID de l'utilisateur
+        this.isRented = false;
+        this.rentedBy = null;
     }
 }
