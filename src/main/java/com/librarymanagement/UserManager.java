@@ -66,7 +66,7 @@ public class UserManager {
         }
     }
 
-    private void saveUsers() throws IOException {
+    public void saveUsers() throws IOException {
         File file = new File("/Users/edouardgaignerot/Desktop/Ecole/JUNIA/AP4/JAVA/TPNOTE/Library/src/main/resources/users.json");
     
         // Crée le fichier s'il n'existe pas

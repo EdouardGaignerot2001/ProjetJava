@@ -6,10 +6,11 @@ import java.util.Scanner;
 public class LibraryService {
     private Library library;
     private RentalService rentalService;
-
-    public LibraryService(Library library) {
+    private UserManager userManager; // Add UserManager
+    public LibraryService(Library library, UserManager userManager) {
         this.library = library;
-        this.rentalService = new RentalService(library);
+        this.userManager = userManager;
+        this.rentalService = new RentalService(library,userManager);
     }
 
     public void loadBooksFromJson(String jsonFileName) {

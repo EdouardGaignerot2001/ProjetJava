@@ -1,10 +1,14 @@
 package com.librarymanagement;
 
+import java.io.IOException;
+
 public class RentalService {
     private Library library;
+    private UserManager userManager; // Ajoutez une référence à UserManager
 
-    public RentalService(Library library) {
+    public RentalService(Library library, UserManager userManager) {
         this.library = library;
+        this.userManager = userManager; // Initialisez le UserManager
     }
 
     public boolean rentBook(User user, Book book) {
@@ -21,16 +25,25 @@ public class RentalService {
         }
 
         // Vérifie si l'utilisateur a déjà loué ce livre
-        if (user.alreadyRentedBook(book)) {
+        String bookGUID = book.getGUID(); // Supposons que vous ayez une méthode getGUID() dans Book
+        if (user.alreadyRentedBook(bookGUID)) {
             System.out.println("L'utilisateur " + user.getName() + " a déjà loué le livre " + book.getTitle() + ".");
             return false;
         }
 
         // Loue le livre à l'utilisateur et le retire de la bibliothèque
-        user.rentBook(book);
+        user.rentBook(bookGUID); // Ajoute le GUID du livre à la liste des livres loués
         library.getBooks().remove(book); // Supprime le livre des livres disponibles
 
         System.out.println("L'utilisateur " + user.getName() + " a loué le livre " + book.getTitle() + ".");
+
+        // Sauvegarde l'utilisateur après avoir modifié les livres loués
+        try {
+            userManager.saveUsers(); // Utilisez l'instance de UserManager ici
+        } catch (IOException e) {
+            System.err.println("Erreur lors de la sauvegarde des utilisateurs : " + e.getMessage());
+        }
+
         return true;
     }
 }
