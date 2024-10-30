@@ -46,4 +46,36 @@ public class RentalService {
 
         return true;
     }
+
+    public boolean returnBook(User user, String bookGUID) {
+        // Vérifie si l'utilisateur a déjà loué ce livre
+        if (!user.alreadyRentedBook(bookGUID)) {
+            System.out.println(
+                    "L'utilisateur " + user.getName() + " n'a pas loué le livre avec le GUID " + bookGUID + ".");
+            return false;
+        }
+
+        // Supprime le GUID du livre de la liste des livres loués de l'utilisateur
+        user.getRentedBooks().remove(bookGUID);
+
+        // Ajoute le livre à la bibliothèque
+        Book book = library.getBookByIsbn(bookGUID);
+        if (book != null) {
+            library.addBook(book); // Ajoute le livre à la bibliothèque
+            System.out.println(
+                    "L'utilisateur " + user.getName() + " a rendu le livre " + book.getTitle() + " avec succès.");
+        } else {
+            System.out.println("Le livre avec le GUID " + bookGUID + " n'existe pas dans la bibliothèque.");
+        }
+
+        // Sauvegarde l'utilisateur après avoir modifié les livres loués
+        try {
+            userManager.saveUsers(); // Assurez-vous que userManager est accessible ici
+        } catch (IOException e) {
+            System.err.println("Erreur lors de la sauvegarde des utilisateurs : " + e.getMessage());
+        }
+
+        return true;
+    }
+
 }

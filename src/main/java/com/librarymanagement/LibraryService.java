@@ -7,10 +7,11 @@ public class LibraryService {
     private Library library;
     private RentalService rentalService;
     private UserManager userManager; // Add UserManager
+
     public LibraryService(Library library, UserManager userManager) {
         this.library = library;
         this.userManager = userManager;
-        this.rentalService = new RentalService(library,userManager);
+        this.rentalService = new RentalService(library, userManager);
     }
 
     public void loadBooksFromJson(String jsonFileName) {
@@ -62,5 +63,12 @@ public class LibraryService {
             System.out.println("Livre non trouvé avec l'ISBN fourni.");
         }
     }
-    
+
+    public void returnBook(Scanner scanner, User user) {
+        System.out.print("Entrez le GUID du livre que vous souhaitez rendre : ");
+        String bookGUID = scanner.nextLine();
+        boolean success = rentalService.returnBook(user, bookGUID);
+        System.out.println(success ? "Livre rendu avec succès !" : "Échec du retour du livre.");
+    }
+
 }

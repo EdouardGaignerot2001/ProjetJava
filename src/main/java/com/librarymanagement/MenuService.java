@@ -14,6 +14,7 @@ public class MenuService {
     public void loadBooksFromJson(String jsonFileName) {
         libraryService.loadBooksFromJson(jsonFileName);
     }
+
     public void loadUsersFromJson(String jsonFileName) {
         userManager.loadUsersFromJson(jsonFileName);
     }
@@ -22,12 +23,12 @@ public class MenuService {
         while (true) {
             System.out.print("Entrez votre nom d'utilisateur (ou tapez 'exit' pour quitter) : ");
             String userNameInput = scanner.nextLine();
-    
+
             if ("exit".equalsIgnoreCase(userNameInput)) {
                 System.out.println("Merci et à bientôt !");
                 return null;
             }
-    
+
             // Chercher l'utilisateur par nom
             User user = userManager.getUserByName(userNameInput).orElse(null);
             if (user != null) {
@@ -47,7 +48,6 @@ public class MenuService {
             }
         }
     }
-    
 
     public void showMenu(Scanner scanner, User user) {
         while (true) {
@@ -58,7 +58,7 @@ public class MenuService {
             System.out.println("3. Voir les détails d'un livre");
             System.out.println("4. Rendre un livre");
             System.out.println("5. Exporter le catalogue");
-            System.out.println("5. crer un livre");
+            System.out.println("6. crer un livre");
             System.out.println("0. Quitter");
             System.out.print("Choisissez une option : ");
 
@@ -73,6 +73,9 @@ public class MenuService {
                     break;
                 case "3":
                     libraryService.viewBookDetails(scanner);
+                    break;
+                case "4":
+                    libraryService.returnBook(scanner, user);
                     break;
                 case "0":
                     System.out.println("Merci d'avoir utilisé l'application. À bientôt !");
