@@ -2,6 +2,8 @@ package com.librarymanagement;
 
 import java.util.List;
 import java.util.Scanner;
+import java.io.IOException;
+import java.util.UUID;
 
 public class LibraryService {
     private Library library;
@@ -72,4 +74,47 @@ public class LibraryService {
         System.out.println(success ? "Livre rendu avec succès !" : "Échec du retour du livre.");
     }
 
-}
+    public void createBook(Scanner scanner) {
+        String guid = UUID.randomUUID().toString();
+    
+        System.out.print("Entrez le titre du livre : ");
+        String title = scanner.nextLine();
+    
+        System.out.print("Entrez la description du livre : ");
+        String description = scanner.nextLine();
+    
+        System.out.print("Entrez l'auteur du livre : ");
+        String author = scanner.nextLine();
+    
+        double price = 0.0; // Initialisation de la variable price
+        boolean validPrice = false; // Indicateur de validation
+    
+        // Validation de l'entrée pour le prix
+        while (!validPrice) {
+            System.out.print("Entrez le prix du livre : ");
+            String priceInput = scanner.nextLine(); // Lire l'entrée comme une chaîne
+    
+            try {
+                price = Double.parseDouble(priceInput); // Convertir la chaîne en double
+                if (price < 0) {
+                    System.out.println("Le prix ne peut pas être négatif. Veuillez réessayer.");
+                } else {
+                    validPrice = true; // Prix valide, sortir de la boucle
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Entrée invalide. Veuillez entrer un chiffre pour le prix.");
+            }
+        }
+    
+        Book newBook = new Book(guid, title, description, author, price);
+        library.addBook(newBook);
+    
+        // Sauvegardez les livres après avoir ajouté un nouveau livre
+        try {
+            library.saveBooks();
+            System.out.println("Le livre a été créé et sauvegardé avec succès !");
+        } catch (IOException e) {
+            System.err.println("Erreur lors de la sauvegarde des livres : " + e.getMessage());
+        }
+    }
+}    

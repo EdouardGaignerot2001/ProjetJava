@@ -76,6 +76,8 @@ public class MenuService {
                     break;
                 case "4":
                     libraryService.returnBook(scanner, user);
+                case "6":
+                    libraryService.createBook(scanner);
                     break;
                 case "0":
                     System.out.println("Merci d'avoir utilisé l'application. À bientôt !");
